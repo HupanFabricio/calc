@@ -5,6 +5,11 @@ botones.forEach(boton => {
     boton.addEventListener("click", () => {
         const botonApretado = boton.textContent;
 
+        if(pantalla.textContent === "Error") {
+            pantalla.textContent = "0";
+            return;
+        }
+
         if (boton.id === "c") {
             pantalla.textContent = "0";
             return;
@@ -14,6 +19,17 @@ botones.forEach(boton => {
             pantalla.textContent = pantalla.textContent.slice(0,-1);
             if(!pantalla.textContent) {
                 pantalla.textContent = "0";
+            }
+            return;
+        }
+
+        if (boton.id === "igual") {
+
+
+            try {
+                pantalla.textContent = eval(pantalla.textContent);
+            } catch (error) {
+                pantalla.textContent = "Error";
             }
             return;
         }
